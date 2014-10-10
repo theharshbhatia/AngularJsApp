@@ -22,18 +22,16 @@ emapp.factory('personFactory',function(){
 
    controllers.SimpleController = function($scope, personFactory) {
       $scope.persons = personFactory.getNames();
-
        // $scope.submitForm = function(isValid) {
 
        //     // check to make sure the form is completely valid
        //     if (isValid) {
        //         SaveUser();
        //     }
-
        // };
 
-       var SaveUser = function() {
-           $scope.customers.push({
+       $scope.SaveUser = function() {
+           $scope.persons.push({
                name: $scope.NewUser.name,
                username: $scope.NewUser.username,
                email: $scope.NewUser.email,

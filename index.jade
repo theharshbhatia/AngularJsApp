@@ -32,24 +32,25 @@ html
                             |Delete
                 tr
         h2  Add New User
-        form.form-horizontal(name="newUserForm" role="form")
+        form.form-horizontal(name="newUserForm" role="form" novalidate)
             div.form-group
                 label.control-label.col-sm-2 First-Name
                 div.col-sm-10
                     input(type="text" name="firstname" placeholder="e.g. John" class="form-control" ng-model="NewUser.name")
-                    p(ng-show="new-user-form.name.$invalid && !new-user-form.name.$pristine") Your name is required
+                    //p(ng-show={newUserForm.firstname.$invalid && !newUserForm.firstname.$pristine})Your name is required
                 br
             div.form-group
                 label.control-label.col-sm-2 Email
                 div.col-sm-10
                     input(type="mail" name="email" placeholder="e.g. john@abc.com" class="form-control" ng-model='NewUser.email')
+
                 br
             div.form-group
                 label.control-label.col-sm-2 Username
                 div.col-sm-10
                     input(type="text" name="username" placeholder="Username" class="form-control" ng-model="NewUser.username" ng-minlength="3" ng-maxlength="5")
-                    //p(ng-show="newUserForm.username.$error.minlength")Username is too short.
-                    //p(ng-show="newUserForm.username.$error.maxlength")Username is too long.
+                    p(ng-show="newUserForm.username.$error.minlength") Username is too short.
+                    p(ng-show="newUserForm.username.$error.maxlength") Username is too long.
             div.form-group
                 label.control-label.col-sm-2 Password
                 div.col-sm-10

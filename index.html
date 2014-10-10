@@ -32,12 +32,12 @@
       </tbody>
     </table>
     <h2> Add New User</h2>
-    <form name="newUserForm" role="form" class="form-horizontal">
+    <form name="newUserForm" role="form" novalidate class="form-horizontal">
       <div class="form-group">
         <label class="control-label col-sm-2">First-Name</label>
         <div class="col-sm-10">
           <input type="text" name="firstname" placeholder="e.g. John" ng-model="NewUser.name" class="form-control">
-          <p ng-show="new-user-form.name.$invalid &amp;&amp; !new-user-form.name.$pristine">Your name is required</p>
+          <!--p(ng-show={newUserForm.firstname.$invalid && !newUserForm.firstname.$pristine})Your name is required-->
         </div><br>
       </div>
       <div class="form-group">
@@ -50,8 +50,8 @@
         <label class="control-label col-sm-2">Username</label>
         <div class="col-sm-10">
           <input type="text" name="username" placeholder="Username" ng-model="NewUser.username" ng-minlength="3" ng-maxlength="5" class="form-control">
-          <!--p(ng-show="newUserForm.username.$error.minlength")Username is too short.-->
-          <!--p(ng-show="newUserForm.username.$error.maxlength")Username is too long.-->
+          <p ng-show="newUserForm.username.$error.minlength">Username is too short.</p>
+          <p ng-show="newUserForm.username.$error.maxlength">Username is too long.</p>
         </div>
       </div>
       <div class="form-group">
