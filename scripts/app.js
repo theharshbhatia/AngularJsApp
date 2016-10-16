@@ -1,27 +1,55 @@
-   var emapp = angular.module('EmApp', []);
+   var emapp = angular.module('EmApp', ['ngRoute']);
    var controllers = {};
 
-emapp.factory('personFactory',function(){
-    return {
-        getNames : function(){
-                return   [{
-           name: 'John cena',
-           username: 'Jcena',
-           email: 'john@gmail.com',
-           password: 'sStaYHungry'
-       }, {
-           name: 'Kabir Khan',
-           username: 'KKhan',
-           email: 'Kabir@gmail.com',
-           password: 'PPHungry'
-       }];
-        },
-    };
-});
+   emapp.config(['$routeProvider',
+       function($routeProvider) {
+           $routeProvider
+               .when('/', {
+                   controller: 'PersonController',
+                   templateUrl: 'views/list.html'
+               })
+               .when('/AddPerson', {
+                   controller: 'PersonController',
+                   templateUrl: 'views/views.html'
+               })
+               .when('/EditPerson', {
+                   templateUrl: 'views/views.html',
+                   controller: 'SimpleController'
+               })
+               .otherwise({
+                   redirectTo: '/'
+               });
+       }
+   ]);
 
+   emapp.factory('personFactory', function() {
+       return {
+           getNames: function() {
+               return [{
+                   name: 'John cena',
+                   username: 'Jcena',
+                   email: 'john@gmail.com',
+                   password: 'sStaYHungry'
+               }, {
+                   name: 'Kabir Khan',
+                   username: 'KKhan',
+                   email: 'Kabir@gmail.com',
+                   password: 'PPHungry'
+               }];
+           },
+       };
+   });
 
-   controllers.SimpleController = function($scope, personFactory) {
-      $scope.persons = personFactory.getNames();
+    // emapp.factory('PersonGetFactory',function($http) {
+    //     return {
+    //         getJSON : function(){
+    //             return $http.get()
+    //         }
+    //     };
+    // });
+
+   controllers.PersonController = function($scope, personFactory) {
+       $scope.persons = personFactory.getNames();
        // $scope.submitForm = function(isValid) {
 
        //     // check to make sure the form is completely valid

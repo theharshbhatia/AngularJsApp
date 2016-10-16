@@ -1,0 +1,36 @@
+
+<div class="addNewUser">
+  <h2> Add New User</h2>
+  <form name="newUserForm" role="form" novalidate="novalidate" class="form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-sm-2">First-Name</label>
+      <div class="col-sm-10">
+        <input type="text" name="firstname" placeholder="e.g. John" ng-model="NewUser.name" class="form-control"/>
+        <!--p(ng-show={newUserForm.firstname.$invalid && !newUserForm.firstname.$pristine})Your name is required-->
+      </div><br/>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">Email</label>
+      <div class="col-sm-10">
+        <input type="mail" name="email" placeholder="e.g. john@abc.com" ng-model="NewUser.email" class="form-control"/>
+      </div><br/>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">Username</label>
+      <div class="col-sm-10">
+        <input type="text" name="username" placeholder="Username" ng-model="NewUser.username" ng-minlength="3" ng-maxlength="5" class="form-control"/>
+        <p ng-show="newUserForm.username.$error.minlength">Username is too short.</p>
+        <p ng-show="newUserForm.username.$error.maxlength">Username is too long.</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">Password</label>
+      <div class="col-sm-10">
+        <input type="password" name="password" placeholder="Enter Password" ng-model="NewUser.password" class="form-control"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10"><a type="submit" ng-click="SaveUser()" class="btn btn-primary">Save Employee</a><a href="#/" class="btn btn-danger">Discard</a></div>
+    </div>
+  </form>
+</div>
